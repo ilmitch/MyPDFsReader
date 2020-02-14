@@ -8,6 +8,8 @@ from fnmatch import fnmatch
 def list_pdf_files(path = "./", pattern = "*.pdf"):
     '''
     it returns a PDF files list found in the path folder/subfolders
+    input:  directory path and pdf files suffix
+    output: list with the pdf files paths 
     '''
     root = path
     files_lst = list()
@@ -24,7 +26,7 @@ def list_pdf_files(path = "./", pattern = "*.pdf"):
 def read_pdfs(path = "./", pattern = "*.pdf"):
     '''
     it returns a dictiornary with each key corresponeding to a pdf file text
-    input:  pdf filepaths list
+    input:  directory path and pdf files suffix
     output: dictionary with pdfs text
     '''
     #getting files list
