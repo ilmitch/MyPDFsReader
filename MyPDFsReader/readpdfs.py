@@ -7,7 +7,7 @@ from fnmatch import fnmatch
 
 def list_pdf_files(path = "./", pattern = "*.pdf"):
     '''
-    it returns PDF files list at pathdirectory
+    it returns a PDF files list found in the path folder/subfolders
     '''
     root = path
     files_lst = list()
