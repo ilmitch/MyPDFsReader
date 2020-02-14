@@ -1,2 +1,4 @@
-from read_pdfs import read_pdfs
+from MyPackage.readpdfs import read_pdfs
+
+pdfs = read_pdfs(path="./input/pdf_new")
 

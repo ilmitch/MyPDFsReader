@@ -35,8 +35,7 @@ def read_pdfs(path = "./", pattern = "*.pdf"):
 
     for file in files_lst:
 
-        key = file.split('/')[-1].split('.pdf')[0]
-        print(f"key: {key}") 
+        key = file.split('/')[-1].split('.pdf')[0] 
 
         with open(file,'rb') as f:
 
