@@ -1,16 +1,9 @@
 #extract information from perfomance pdfs through regex
 
 import os
-from fnmatch import fnmatch
-
-import datetime as dt
 import re
 import PyPDF2
-
-import numpy as np
-import pandas as pd
-
-import matplotlib.pyplot as plt
+from fnmatch import fnmatch
 
 
 def list_pdf_files(root = "./", pattern = "*.pdf"):
