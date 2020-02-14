@@ -1,7 +1,7 @@
 from MyPDFsReader.readpdfs import list_pdf_files
 from MyPDFsReader.readpdfs import read_pdfs
 
-# example file showing how to use the list_pdf_files and read_pdfs functions
+# example file showing how to use the list_pdf_files() and read_pdfs() functions
 
 # listing pdf files in path directory
 print('listing pdf files found in path directory:\n')
