@@ -1,4 +1,4 @@
-from MyReadPDFs.readpdfs import read_pdfs
+from MyPDFsReader.readpdfs import read_pdfs
 
 pdfs = read_pdfs(path="./input/pdf_new")
 

@@ -28,17 +28,18 @@ def read_pdfs(path = "./", pattern = "*.pdf"):
     output: dictionary with pdfs text
     '''
     #getting files list
-    print('Reading files text..')
+    print('Listing files..')
     files_lst = list_pdf_files(path, pattern)
 
     pdf_txt_dict = dict()
 
+    print('Reading files text..')
     for file in files_lst:
 
         key = file.split('/')[-1].split('.pdf')[0] 
 
         with open(file,'rb') as f:
-
+            print(f'Reading {file}')
             pdf_reader = PyPDF2.PdfFileReader(f)
             pdf_text = list()
 
@@ -49,5 +50,7 @@ def read_pdfs(path = "./", pattern = "*.pdf"):
                 pdf_text.append(page.extractText())
 
             pdf_txt_dict.update({key : pdf_text})
+
+    print('Read all files!')
 
     return pdf_txt_dict
