@@ -35,7 +35,7 @@ def read_pdfs(path = "./", pattern = "*.pdf"):
 
     print('Reading files text..')
     for file in files_lst:
-        #extracing the filename to be used as dictionary key 
+        #extracing the filename from the file path to be used as dictionary key 
         key = file.split('/')[-1].split('.pdf')[0] 
 
         with open(file,'rb') as f:
