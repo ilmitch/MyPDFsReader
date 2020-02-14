@@ -1,15 +1,15 @@
 #extract information from perfomance pdfs through regex
 
 import os
-import re
 import PyPDF2
 from fnmatch import fnmatch
 
 
-def list_pdf_files(root = "./", pattern = "*.pdf"):
+def list_pdf_files(path = "./", pattern = "*.pdf"):
     '''
-    it returns PDF files list at root directory
+    it returns PDF files list at pathdirectory
     '''
+    root = path
     files_lst = list()
     for path, subdirs, files in os.walk(root):
         for name in files:
@@ -21,23 +21,26 @@ def list_pdf_files(root = "./", pattern = "*.pdf"):
 
     return files_lst
 
-def read_pdfs(pdf_lst):
+def read_pdfs(path = "./", pattern = "*.pdf"):
     '''
     it returns a dictiornary with each key corresponeding to a pdf file text
     input:  pdf filepaths list
     output: dictionary with pdfs text
     '''
+    #getting files list
+    print('Reading files text..')
+    files_lst = list_pdf_files(path, pattern)
 
     pdf_txt_dict = dict()
 
     for file in files_lst:
 
-        key = file.split('/')[1].split('.pdf')[0] 
-        # f = open(file,'rb')
-        # pdf_reader = PyPDF2.PdfFileReader(f)
-        with open(file,'rb') as f:
-            pdf_reader = PyPDF2.PdfFileReader(f)
+        key = file.split('/')[-1].split('.pdf')[0]
+        print(f"key: {key}") 
 
+        with open(file,'rb') as f:
+
+            pdf_reader = PyPDF2.PdfFileReader(f)
             pdf_text = list()
 
             for p in range(pdf_reader.numPages):
@@ -45,13 +48,7 @@ def read_pdfs(pdf_lst):
                 # The index will correspond to the page number.
                 page = pdf_reader.getPage(p)
                 pdf_text.append(page.extractText())
-                print(f"Page txt: {page.extractText()}")
 
             pdf_txt_dict.update({key : pdf_text})
 
     return pdf_txt_dict
-
-# Listing available PDFs
-files_lst = list_pdf_files()
-# reading PDF text
-pdf_txt_dict = read_pdfs(pdf_lst=files_lst)
