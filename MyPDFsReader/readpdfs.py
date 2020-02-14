@@ -30,22 +30,22 @@ def read_pdfs(path = "./", pattern = "*.pdf"):
     #getting files list
     print('Listing files..')
     files_lst = list_pdf_files(path, pattern)
-
+    # the return variable will be a dictionary
     pdf_txt_dict = dict()
 
     print('Reading files text..')
     for file in files_lst:
-
+        #extracing the filename to be used as dictionary key 
         key = file.split('/')[-1].split('.pdf')[0] 
 
         with open(file,'rb') as f:
+            #opening each listed file
             print(f'Reading {file}')
             pdf_reader = PyPDF2.PdfFileReader(f)
             pdf_text = list()
 
             for p in range(pdf_reader.numPages):
-                # List of every page's text.
-                # The index will correspond to the page number.
+                #extracting text from each page
                 page = pdf_reader.getPage(p)
                 pdf_text.append(page.extractText())
 
